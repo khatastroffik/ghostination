@@ -1,0 +1,7 @@
+./*.hbs
+./package.json
+./LICENSE
+./README.md
+./partials/
+./locales/
+./assets/
