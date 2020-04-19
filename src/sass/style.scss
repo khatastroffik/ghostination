@@ -2353,7 +2353,7 @@ textarea {
 	line-height: 1.5em;
 	height: 100vw;
 	padding-top:2rem;
-	@media only screen and (max-width: 1439px) {
+	@media only screen and (max-width: 1439px), print {
 		font-family: inspect($font-family-serif);
 		position: static!important;
 		height: auto;
@@ -2378,7 +2378,7 @@ textarea {
 	display: none;
 }
 
-@media only screen and (max-width: 1439px) {
+@media only screen and (max-width: 1439px), print {
 	.toc-link:before{
 		visibility: hidden;
 		display: none;
