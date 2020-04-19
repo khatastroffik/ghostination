@@ -469,12 +469,16 @@ textarea {
 	}
 
 	.kg-gallery-container {
-		display: flex;
+		@media not print {
+			display: flex;
+		}
 		flex-direction: column;
 	}
 
 	.kg-gallery-row {
-		display: flex;
+		@media not print {
+			display: flex;
+		}
 		flex-direction: row;
 		justify-content: center;
 	}
@@ -518,7 +522,10 @@ textarea {
 	}
 
 	.kg-bookmark-container {
-		display: flex;
+		@media not print {
+			display: flex;
+		}
+
 		text-decoration: none;
 		min-height: 8em;
 		background: $color-background;
@@ -533,7 +540,10 @@ textarea {
 
 	.kg-bookmark-content {
 		text-rendering: optimizeLegibility;
-		display: flex;
+		@media not print {
+			display: flex;
+		}
+
 		flex-direction: column;
 		flex-grow: 1;
 		align-items: flex-start;
@@ -585,7 +595,10 @@ textarea {
 
 	.kg-bookmark-metadata {
 		text-rendering: optimizeLegibility;
-		display: flex;
+		@media not print {
+			display: flex;
+		}
+
 		align-items: center;
 		font-size: 0.75em;
 		line-height: 1.66667em;
@@ -740,7 +753,10 @@ textarea {
 	z-index: 5;
 	background: no-repeat scroll center center / cover #000;
 	animation: 0.5s ease-in forwards fadein;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	align-items: center;
 
 	&:after {
@@ -814,7 +830,10 @@ textarea {
 	}
 
 	.archive-info {
-		display: flex;
+		@media not print {
+			display: flex;
+		}
+
 		margin-bottom: 2rem;
 		font-size: 2em;
 		line-height: 1em;
@@ -945,7 +964,10 @@ textarea {
 }
 
 .page-wrapper {
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	flex-direction: column;
 	min-height: 100vh;
 	position: relative;
@@ -1149,7 +1171,10 @@ textarea {
 	}
 
 	.inner {
-		display: flex;
+		@media not print {
+			display: flex;
+		}
+
 		justify-content: space-between;
 	}
 
@@ -1209,7 +1234,10 @@ textarea {
 }
 
 .nav-header .nav-wrapper {
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	max-height: calc(100vh - 6rem);
 	padding: 2rem 4rem;
 	overflow-y: auto;
@@ -1244,7 +1272,10 @@ textarea {
 
 .nav-header ul {
 	position: relative;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	width: 100%;
 	margin: auto;
 	padding: 0;
@@ -1438,7 +1469,10 @@ textarea {
 }
 
 .nav-footer .nav-wrapper {
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	padding: 0 4rem;
 	@media only screen and (max-width: $breakpoint-medium) {
 		flex-direction: column;
@@ -1448,7 +1482,10 @@ textarea {
 
 .nav-footer ul {
 	position: relative;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -1593,7 +1630,10 @@ textarea {
 	z-index: 5;
 	background: no-repeat scroll center center / cover #000;
 	animation: 0.5s ease-in forwards fadein;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	align-items: center;
 
 	img {
@@ -1627,7 +1667,10 @@ textarea {
 .post-info {
 	position: relative;
 	z-index: 10;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	margin-bottom: 2rem;
 	font-size: 2em;
 	line-height: 1em;
@@ -1726,7 +1769,10 @@ textarea {
 	&:after {
 		clear: both;
 		content: '';
-		display: table;
+		@media not print {
+			display: table;
+		}
+
 	}
 
 	&:before {
@@ -1749,7 +1795,10 @@ textarea {
 		&:after {
 			clear: both;
 			content: '';
-			display: table;
+			@media not print {
+				display: table;
+			}
+	
 		}
 
 		.post-meta-avatar {
@@ -1806,7 +1855,10 @@ textarea {
 }
 
 .post-content {
-	display: flex;
+	@media not print {
+		display: flex;
+	}
+
 	flex-direction: column;
 	align-items: center;
 	font-size: 2rem;
@@ -1836,7 +1888,10 @@ textarea {
 	&:after {
 		clear: both;
 		content: '';
-		display: table;
+		@media not print {
+			display: table;
+		}
+
 	}
 }
 
@@ -1852,7 +1907,9 @@ textarea {
 	position: relative;
 	max-width: 33.33333%;
 	float: right;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
 	@media only screen and (max-width: $breakpoint-medium) {
 		max-width: none;
 		float: none;
@@ -1920,7 +1977,9 @@ textarea {
 	position: relative;
 	max-width: 66.66666%;
 	float: left;
-	display: flex;
+	@media not print {
+		display: flex;
+	}
 	flex-wrap: wrap;
 	@media only screen and (max-width: 640px) {
 		max-width: none;
@@ -2244,7 +2303,10 @@ textarea {
 		&:after {
 			clear: both;
 			content: '';
-			display: table;
+			@media not print {
+				display: table;
+			}
+	
 		}
 	}
 }
@@ -2398,6 +2460,46 @@ textarea {
 
 .is-active-link:before {
 	background-color: $color-primary-active;
+}
+
+/* ==========================================================================
+   PRINT OUTPUT FORMATING
+	 ========================================================================== */
+
+.print-url {
+	visibility: hidden;
+	display: none;
+	font-size: 1.6em;
+	line-height: 1.5em;
+	border:2px solid #303439;
+	padding: 0 3rem;
+	margin: 2rem 2rem;
+	font-family: inspect($font-family-sans-serif);
+}
+
+.print-site-name{
+	font-weight: 700;
+	font-size: 2em;
+	font-family: inspect($font-family-serif);
+}
+
+@media print {
+	.nav-header, .progress-container, .post-cover, .blog-cover, .post-share, .post-nav, .post-footer, .nav-footer {
+		display: none;
+	}
+	.post-header, .blog-header {
+		padding: 2rem!important;
+		border:2px solid #303439;
+		margin: 0 2rem;
+	}
+	.blog-box{
+		padding: 0!important;
+	}
+	.print-url {
+		visibility: visible;
+		display: block;
+	}
+	
 }
 
 /* HIGHLIGHTJS related formats should be imported at last */
