@@ -76,3 +76,16 @@
   url('../font/fira-sans-v8-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
   url('../font/fira-sans-v8-latin-700.svg#FiraSans') format('svg'); /* Legacy iOS */
 }
+
+$font-family-serif: 'Cardo', serif;
+$font-family-sans-serif: 'Fira Sans', sans-serif;
+$font-family-monospace: monospace, sans-serif;
+
+/* ++++++++++++++++++++++++++++++++++++++++
+ * How to resolve the font-family variables
+ * ----------------------------------------
+ * e.g.
+ *
+ * font-family: inspect($font-family-serif);
+ *
+ * +++++++++++++++++++++++++++++++++++++++ */
