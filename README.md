@@ -44,7 +44,7 @@ For example:
 
 ## Links
 
-* [Releases and Downloads](./releases)
+* [Releases and Downloads](https://github.com/khatastroffik/ghostination/releases)
 
 * [Screenshots](./screenshots.md) TBD
 
