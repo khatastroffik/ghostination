@@ -1,0 +1,11 @@
+{{!-- DEFAULT COVER FOR POSTS AND PAGES --}}
+{{^has tag="#ndc, #no-default-cover"}}
+	<div class="post-cover cover" 
+      style="background-image: url('{{asset 'images/default-cover.jpg'}}');"  
+      {{#if altText}} 
+        alt="{{altText}}"
+      {{else}}
+        alt="{{@site.title}}"
+      {{/if}}
+  ></div>
+{{/has}}
