@@ -2499,8 +2499,32 @@ textarea {
 		visibility: visible;
 		display: block;
 	}
-	
+	/*
+	 * ensure that the line numbers aren't visible on printouts 
+ 	 * while the code is automatically wrapped
+   */
+	.post-content pre { 
+		padding: 0;
+	}
+	pre .lines {
+		display: none;
+	}
+	.post-content pre code, .post-content pre tt {
+		margin: 0;
+		white-space: pre-wrap!important;
+	}		
 }
 
-/* HIGHLIGHTJS related formats should be imported at last */
+/*
+	Override the standard theme formating to match the Highlight.js background
+*/
+pre .lines {
+  background: #232323!important;
+	border-right-color: #303439!important;
+}
+
+/* 
+ * IMPORTANT
+ * Highlight.js related formats should be imported at last 
+ */
 @import "highlight";
