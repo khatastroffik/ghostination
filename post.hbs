@@ -137,9 +137,7 @@
 					// Calculate amount of lines
 	        var lines = code.html().split(/\n(?!$)/g).length;
 	        var numbers = [];
-	        if (lines > 1) {
-	          lines++;
-	        }
+          lines++;
 	        for (i = 1; i < lines; i++) {
 	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
 	        }
