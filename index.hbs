@@ -3,11 +3,11 @@
 	<div class="inner">
 		<div class="box blog-box">
 			<h1 class="blog-name">{{@site.title}}</h1>
-			{{#if @site.description}}
-			<span class="blog-description">{{@site.description}}</span>
-			{{/if}}
-			{{#if @site.cover_image}}
+				{{#if @site.description}}
+				<span class="blog-description">{{@site.description}}</span>
+				{{/if}}
 		</div>
+		{{#if @site.cover_image}}
 		<div class="blog-cover cover">
 			<img
 			srcset="{{img_url @site.cover_image size="s"}} 320w,

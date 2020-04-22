@@ -2,10 +2,22 @@
 
 {{#post}}
 
-<header class="post-header {{#if feature_image}} has-cover {{/if}}">
+<header class="post-header{{#if feature_image}} has-cover{{else}}{{^has tag="#ndc, #no-default-cover"}} has-cover{{/has}}{{/if}}">
 	<div class="inner">
 		<h1 class="post-title">{{{title}}}</h1>
-		{{#if feature_image}}<div class="post-cover cover" style="background-image: url('{{img_url feature_image}}');"></div>{{/if}}
+		{{#if excerpt}}
+			<div class="post-info">
+				<span class="post-type">{{excerpt}}</span>
+			</div>
+		{{/if}}
+		<div class="post-meta">
+			<time datetime="{{date updated_at format='DD-MM-YYYY'}}">{{t "Last updated"}}: {{date updated_at format="DD MMM YYYY"}}</time>
+		</div>		
+		{{#if feature_image}}
+			<div class="post-cover cover" style="background-image: url('{{img_url feature_image}}');"></div>
+		{{else}}
+			{{> "default-cover" altText="{{title}}" }}
+		{{/if}}
 	</div>
 </header>
 
