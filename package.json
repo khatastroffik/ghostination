@@ -44,10 +44,11 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^3.3.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-conventional-github-releaser": "^1.0.0",
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^2.1.0",
-    "load-grunt-tasks": "^3.5.2",
-    "standard-version": "^7.1.0"
+    "grunt-standard-version": "^0.2.2",
+    "load-grunt-tasks": "^3.5.2"
   },
   "config": {
     "posts_per_page": 8,
@@ -72,6 +73,7 @@
   "scripts": {
     "build": "grunt build",
     "compress": "grunt compress",
-    "release": "standard-version"
+    "release": "grunt release",
+    "firstrelease": "grunt firstRelease"
   }
 }
