@@ -115,7 +115,60 @@ module.exports = function(grunt) {
           dest: '.'
         }]
       },
-    }
+    },
+    standard_version: {
+      options: {
+        // releaseAs:  '',
+        // prerelease: 'ALPHA',
+        // infile: 'CHANGELOG.md',
+        // message: 'chore(release): %s',
+        // firstRelease: false,
+        // sign: false,
+        // commitAll: false,
+        // silent: false,
+        // tagPrefix: 'v',
+        // scripts: {},
+        // skip: {},
+        noVerify: true,
+        dryRun: false,
+        push: true,
+        pushTo: 'ghostination'
+      },
+      firstRelease: {
+        options: {
+          firstRelease: true
+        }
+      },
+      release: {
+        options: {
+        }
+      },
+      alpha: {
+        options: {
+          prerelease: 'alpha'
+        }
+      },
+      beta: {
+        options: {
+          prerelease: 'beta'
+        }
+      }
+    },
+    conventionalGithubReleaser: {
+      release:{
+        options: {
+          auth: {
+            type: 'oauth',
+            token: process.env.GH_KHATASTROFFIK_GHOSTINATION
+          },
+          changelogOpts: {
+            preset: 'angular'
+          }
+        }
+      }
+
+    },        
+
   });
 
   grunt.registerTask('build', [
@@ -131,4 +184,29 @@ module.exports = function(grunt) {
     'uglify',
     'watch'
   ]);
+
+  grunt.registerTask('release', [
+    'build',
+    'compress',    
+    'standard_version:release',
+    'conventionalGithubReleaser'
+  ]);
+  grunt.registerTask('firstRelease', [
+    'build',
+    'compress',    
+    'standard_version:firstRelease',
+    'conventionalGithubReleaser'
+  ]);
+  grunt.registerTask('release-alpha', [
+    'build',
+    'compress',    
+    'standard_version:alpha',
+    'conventionalGithubReleaser'
+  ]);
+  grunt.registerTask('release-beta', [
+    'build',
+    'compress',    
+    'standard_version:beta',
+    'conventionalGithubReleaser'
+  ]);    
 };
