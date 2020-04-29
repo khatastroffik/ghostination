@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
   'use strict';
+  const sass = require('node-sass');
+  const DRYRUN = true;
   require('load-grunt-tasks')(grunt, {
     pattern: ['grunt-*']
   });
@@ -45,6 +47,9 @@ module.exports = function(grunt) {
       all: ['dev', 'dist']
     },
     sass: {
+      options:{
+        implementation: sass,
+      },
       dev: {
         options: {
           includePaths: ['<%= config.cssSrcDir %>'],
@@ -56,6 +61,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
+          implementation: sass,
           outputStyle: 'compressed'
         },
         files: {
@@ -122,7 +128,7 @@ module.exports = function(grunt) {
         header: '# Ghostination changelog\n\n' +
         'All notable changes to this project will be documented in this file. See [Ghostination](https://github.com/khatastroffik/ghostination).\n\n',
         noVerify: true,
-        dryRun: true,
+        dryRun: DRYRUN,
       },
       firstRelease: {
         options: {
@@ -144,6 +150,24 @@ module.exports = function(grunt) {
         }
       }
     },
+    git_push: {
+      options: {
+        flags: {
+          "dry-run": DRYRUN,
+          "no-verify": true,
+          "follow-tags": true,
+        },
+        verbose: true,
+        debug: false,
+        continueIfError: false
+      },
+      default: {
+        options: {
+          remote: 'ghostination',
+          branch: 'master',
+        }
+      }
+    },
     conventionalGithubReleaser: {
       release:{
         options: {
@@ -158,10 +182,10 @@ module.exports = function(grunt) {
       }
 
     },        
-
   });
 
   grunt.loadNpmTasks('@khatastroffik/grunt-standard-version');
+  grunt.loadTasks('tasks');
 
   grunt.registerTask('build', [
     'sass:dist',
@@ -181,24 +205,28 @@ module.exports = function(grunt) {
     'build',
     'compress',    
     'standardVersion:release',
+    'git_push',
     // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('firstRelease', [
     'build',
     'compress',    
     'standardVersion:firstRelease',
+    'git_push',
     // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('release-alpha', [
     'build',
     'compress',    
     'standardVersion:alpha',
+    'git_push',
     // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('release-beta', [
     'build',
     'compress',    
     'standardVersion:beta',
+    'git_push',
     // 'conventionalGithubReleaser'
   ]);    
 };
