@@ -116,23 +116,13 @@ module.exports = function(grunt) {
         }]
       },
     },
-    standard_version: {
-      options: {
-        // releaseAs:  '',
-        // prerelease: 'ALPHA',
-        // infile: 'CHANGELOG.md',
-        // message: 'chore(release): %s',
-        // firstRelease: false,
-        // sign: false,
-        // commitAll: false,
-        // silent: false,
-        // tagPrefix: 'v',
-        // scripts: {},
-        // skip: {},
+    standardVersion: {
+      options: {        
+        infile: 'CHANGELOG.md',
+        header: '# Ghostination changelog\n\n' +
+        'All notable changes to this project will be documented in this file. See [Ghostination](https://github.com/khatastroffik/ghostination).\n\n',
         noVerify: true,
-        dryRun: false,
-        push: true,
-        pushTo: 'ghostination'
+        dryRun: true,
       },
       firstRelease: {
         options: {
@@ -171,6 +161,8 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.loadNpmTasks('@khatastroffik/grunt-standard-version');
+
   grunt.registerTask('build', [
     'sass:dist',
     'postcss:dist',
@@ -188,25 +180,25 @@ module.exports = function(grunt) {
   grunt.registerTask('release', [
     'build',
     'compress',    
-    'standard_version:release',
-    'conventionalGithubReleaser'
+    'standardVersion:release',
+    // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('firstRelease', [
     'build',
     'compress',    
-    'standard_version:firstRelease',
-    'conventionalGithubReleaser'
+    'standardVersion:firstRelease',
+    // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('release-alpha', [
     'build',
     'compress',    
-    'standard_version:alpha',
-    'conventionalGithubReleaser'
+    'standardVersion:alpha',
+    // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('release-beta', [
     'build',
     'compress',    
-    'standard_version:beta',
-    'conventionalGithubReleaser'
+    'standardVersion:beta',
+    // 'conventionalGithubReleaser'
   ]);    
 };
