@@ -1,9 +1,9 @@
+'use strict';
+const sass = require('node-sass');
+
 module.exports = function(grunt) {
-  'use strict';
-  const sass = require('node-sass');
-  const DRYRUN = true;
   require('load-grunt-tasks')(grunt, {
-    pattern: ['grunt-*']
+    pattern: ['grunt-*', '@khatastroffik/grunt-*']
   });
 
   grunt.initConfig({
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
         header: '# Ghostination changelog\n\n' +
         'All notable changes to this project will be documented in this file. See [Ghostination](https://github.com/khatastroffik/ghostination).\n\n',
         noVerify: true,
-        dryRun: DRYRUN,
+        dryRun: false,
       },
       firstRelease: {
         options: {
@@ -139,23 +139,17 @@ module.exports = function(grunt) {
         options: {
         }
       },
-      alpha: {
+      test: {
         options: {
-          prerelease: 'alpha'
-        }
-      },
-      beta: {
-        options: {
-          prerelease: 'beta'
+          dryRun: true
         }
       }
     },
     git_push: {
       options: {
         flags: {
-          "dry-run": DRYRUN,
-          "no-verify": true,
-          "follow-tags": true,
+          "dry-run": false,
+          "no-verify": true
         },
         verbose: true,
         debug: false,
@@ -165,6 +159,24 @@ module.exports = function(grunt) {
         options: {
           remote: 'ghostination',
           branch: 'master',
+          flags: {
+            "follow-tags": true,
+          }
+        }
+      },
+      test: {
+        options: {
+          verbose: true,
+          debug: true,
+          remote: 'ghostination',
+          branch: 'master',
+          continueIfError: true,
+          flags: {
+            "dry-run": true,
+            ipv4: true,
+            "follow-tags": true,
+            "no-verify": true
+          }
         }
       }
     },
@@ -184,8 +196,7 @@ module.exports = function(grunt) {
     },        
   });
 
-  grunt.loadNpmTasks('@khatastroffik/grunt-standard-version');
-  grunt.loadTasks('tasks');
+  grunt.registerTask('test', ['standardVersion:test','git_push:test']); // call the git_push task with target 'test'
 
   grunt.registerTask('build', [
     'sass:dist',
@@ -205,28 +216,15 @@ module.exports = function(grunt) {
     'build',
     'compress',    
     'standardVersion:release',
-    'git_push',
+    'git_push:default',
     // 'conventionalGithubReleaser'
   ]);
   grunt.registerTask('firstRelease', [
     'build',
     'compress',    
     'standardVersion:firstRelease',
-    'git_push',
+    'git_push:default',
     // 'conventionalGithubReleaser'
   ]);
-  grunt.registerTask('release-alpha', [
-    'build',
-    'compress',    
-    'standardVersion:alpha',
-    'git_push',
-    // 'conventionalGithubReleaser'
-  ]);
-  grunt.registerTask('release-beta', [
-    'build',
-    'compress',    
-    'standardVersion:beta',
-    'git_push',
-    // 'conventionalGithubReleaser'
-  ]);    
+
 };
