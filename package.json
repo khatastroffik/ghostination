@@ -1,6 +1,6 @@
 {
-  "name": "Ghostination",
-  "description": "A Khatastroffik Ghost Theme",
+  "name": "ghostination",
+  "description": "A slim 'Khatastroffik' Ghost Theme for personal blogs",
   "version": "1.0.0",
   "engines": {
     "ghost": ">=3.0.0",
@@ -8,8 +8,9 @@
   },
   "license": "MIT",
   "screenshots": {
-    "desktop": "src/screenshot-desktop.jpg",
-    "mobile": "src/screenshot-mobile.jpg"
+    "wide": "docs/ghostination-screenshot-01.png",
+    "midsize": "docs/ghostination-screenshot-02.png",
+    "narrow": "docs/ghostination-screenshot-03.png" 
   },
   "author": {
     "name": "Loïs Bégué",
@@ -32,10 +33,15 @@
     "type": "git",
     "url": "https://github.com/khatastroffik/ghostination.git"
   },
+  "homepage": "https://github.com/khatastroffik/ghostination",
+  "bugs": {
+    "url": "https://github.com/khatastroffik/ghostination/issues"
+  },
   "dependencies": {
     "ghosthunter": "github:jamalneufeld/ghostHunter"
   },
   "devDependencies": {
+    "@khatastroffik/grunt-git-push": "^1.0.0",
     "@khatastroffik/grunt-standard-version": "^1.1.0",
     "autoprefixer": "^9.1.5",
     "grunt": "^1.1.0",
