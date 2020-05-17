@@ -46,7 +46,7 @@ For example:
 
 * [Releases and Downloads](https://github.com/khatastroffik/ghostination/releases)
 
-* [Screenshots](./screenshots.md) TBD
+* [Screenshots](./docs/screenshots.md)
 
 * [Demo](./) TBD
 
